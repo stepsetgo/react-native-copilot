@@ -5,6 +5,7 @@ export type Step = {
   visible: boolean,
   target: React$Element,
   wrapper: React$Element,
+  arrowOffset: number,
 };
 
 export type CopilotContext = {
@@ -24,6 +25,5 @@ export type SvgMaskPathFn = (args: {
   canvasSize: {
     x: number,
     y: number
-  },
-  step: Step
+  }
 }) => string;

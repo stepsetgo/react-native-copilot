@@ -60,6 +60,7 @@ const copilot = ({
             registerStep: this.registerStep,
             unregisterStep: this.unregisterStep,
             getCurrentStep: () => this.state.currentStep,
+
           },
         };
       }
@@ -220,6 +221,7 @@ const copilot = ({
               svgMaskPath={svgMaskPath}
               stopOnOutsideClick={stopOnOutsideClick}
               arrowColor={arrowColor}
+              arrowOffset={this.state.currentStep?.arrowOffset || 0}
               ref={(modal) => { this.modal = modal; }}
             />
           </View>

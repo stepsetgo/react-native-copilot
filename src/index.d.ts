@@ -23,13 +23,12 @@ declare module 'react-native-copilot' {
     currentStepNumber: number;
   };
 
-  export type OverlayType = 'svg' | 'view';
   /**
    * Options for the copilot HOC
    */
   export type CopilotOptions = {
     animated?: boolean; // Use animation between steps
-    overlay?: OverlayType; // The overlay in react-native copilot is the component that draws the dark transparent over the root component.
+    overlay?: 'svg' | 'view'; // The overlay in react-native copilot is the component that draws the dark transparent over the root component.
     tooltipComponent?: any; // You can customize the tooltip by passing a component here
     stepNumberComponent?: any; // You can customize the step number by passing a component here
     androidStatusBarVisible?: boolean; // Whether the Android status bar should be visible
@@ -70,7 +69,7 @@ declare module 'react-native-copilot' {
     name: string; // A unique name for the walkthrough step
     order: number; // A positive number indicating the order of the step in the entire walkthrough
     text: string; // The text shown as the description for the step
-    active?: boolean; // If set to false the step is ignored
+    active?: boolean; // If set to false the step is ignored.
   };
 
   /**

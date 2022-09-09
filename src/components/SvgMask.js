@@ -9,7 +9,7 @@ import {
 import Svg from 'react-native-svg';
 import AnimatedSvgPath from './AnimatedPath';
 
-import type { valueXY, svgMaskPath, Step } from '../types';
+import type { valueXY, svgMaskPath } from '../types';
 
 const windowDimensions = Dimensions.get('window');
 const defaultSvgPath = ({ size, position, canvasSize }): string => `M0,0H${canvasSize.x}V${canvasSize.y}H0V0ZM${position.x._value},${position.y._value}H${position.x._value + size.x._value}V${position.y._value + size.y._value}H${position.x._value}V${position.y._value}Z`;
@@ -24,7 +24,6 @@ type Props = {
   backdropColor: string,
   svgMaskPath?: svgMaskPath,
   onClick?: () => void,
-  currentStep: Step
 };
 
 type State = {
@@ -66,7 +65,6 @@ class SvgMask extends Component<Props, State> {
       size: this.state.size,
       position: this.state.position,
       canvasSize: this.state.canvasSize,
-      step: this.props.currentStep,
     });
     if (this.mask) {
       this.mask.setNativeProps({ d });
@@ -124,7 +122,6 @@ class SvgMask extends Component<Props, State> {
                     size: this.state.size,
                     position: this.state.position,
                     canvasSize: this.state.canvasSize,
-                    step: this.props.currentStep,
                   })}
                 />
               </Svg>

@@ -28,6 +28,7 @@ type Props = {
   svgMaskPath?: SvgMaskPathFn,
   stopOnOutsideClick?: boolean,
   arrowColor?: string,
+  arrowOffset?: number,
 };
 
 type State = {
@@ -59,6 +60,7 @@ class CopilotModal extends Component<Props, State> {
     labels: {},
     stopOnOutsideClick: false,
     arrowColor: '#fff',
+    arrowOffset: 0,
   };
 
   state = {
@@ -152,12 +154,12 @@ class CopilotModal extends Component<Props, State> {
       tooltip.right = Math.max(layout.width - (obj.left + obj.width), 0);
       tooltip.right = tooltip.right === 0 ? tooltip.right + MARGIN : tooltip.right;
       tooltip.maxWidth = layout.width - tooltip.right - MARGIN;
-      arrow.right = tooltip.right + MARGIN;
+      arrow.right = tooltip.right + MARGIN + this.props.arrowOffset;
     } else {
       tooltip.left = Math.max(obj.left, 0);
       tooltip.left = tooltip.left === 0 ? tooltip.left + MARGIN : tooltip.left;
       tooltip.maxWidth = layout.width - tooltip.left - MARGIN;
-      arrow.left = tooltip.left + MARGIN;
+      arrow.left = tooltip.left + MARGIN + this.props.arrowOffset;
     }
 
     const animate = {
@@ -254,7 +256,6 @@ class CopilotModal extends Component<Props, State> {
         backdropColor={this.props.backdropColor}
         svgMaskPath={this.props.svgMaskPath}
         onClick={this.handleMaskClick}
-        currentStep={this.props.currentStep}
       />
     );
   }
@@ -264,7 +265,6 @@ class CopilotModal extends Component<Props, State> {
       tooltipComponent: TooltipComponent,
       stepNumberComponent: StepNumberComponent,
     } = this.props;
-
     return [
       <Animated.View
         key="stepNumber"

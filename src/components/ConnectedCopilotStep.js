@@ -9,7 +9,8 @@ type Props = {
   order: number,
   active?: boolean,
   _copilot: CopilotContext,
-  children: React$Element
+  children: React$Element,
+  arrowOffset: number,
 };
 
 class ConnectedCopilotStep extends Component<Props> {
@@ -48,6 +49,7 @@ class ConnectedCopilotStep extends Component<Props> {
       order: this.props.order,
       target: this,
       wrapper: this.wrapper,
+      arrowOffset: this.props?.arrowOffset || 0,
     });
   }
 
