@@ -8,6 +8,9 @@
     "lint": "eslint src/",
     "test": "jest src/"
   },
+  "publishConfig": {
+    "registry": "http://yarnpkg-1.staging.ssg.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohebifar/react-native-copilot.git"
